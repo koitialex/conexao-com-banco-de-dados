@@ -40,12 +40,21 @@ namespace formulariosimples
             this.rbMasculino = new System.Windows.Forms.RadioButton();
             this.rbFeminino = new System.Windows.Forms.RadioButton();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.panelCadastro = new System.Windows.Forms.Panel();
+            this.btnApagar = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.panelCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNumeroCadastro
             // 
-            this.txtNumeroCadastro.Location = new System.Drawing.Point(40, 49);
+            this.txtNumeroCadastro.Location = new System.Drawing.Point(63, 111);
             this.txtNumeroCadastro.Name = "txtNumeroCadastro";
             this.txtNumeroCadastro.Size = new System.Drawing.Size(203, 20);
             this.txtNumeroCadastro.TabIndex = 0;
@@ -54,7 +63,7 @@ namespace formulariosimples
             // 
             // txtNomeCompleto
             // 
-            this.txtNomeCompleto.Location = new System.Drawing.Point(40, 88);
+            this.txtNomeCompleto.Location = new System.Drawing.Point(63, 166);
             this.txtNomeCompleto.Name = "txtNomeCompleto";
             this.txtNomeCompleto.Size = new System.Drawing.Size(203, 20);
             this.txtNomeCompleto.TabIndex = 1;
@@ -64,7 +73,7 @@ namespace formulariosimples
             // lblDataNasc
             // 
             this.lblDataNasc.AutoSize = true;
-            this.lblDataNasc.Location = new System.Drawing.Point(37, 132);
+            this.lblDataNasc.Location = new System.Drawing.Point(60, 212);
             this.lblDataNasc.Name = "lblDataNasc";
             this.lblDataNasc.Size = new System.Drawing.Size(107, 13);
             this.lblDataNasc.TabIndex = 2;
@@ -73,7 +82,7 @@ namespace formulariosimples
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(40, 148);
+            this.dateTimePicker1.Location = new System.Drawing.Point(63, 229);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(101, 20);
             this.dateTimePicker1.TabIndex = 3;
@@ -81,7 +90,7 @@ namespace formulariosimples
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(37, 190);
+            this.lblCidade.Location = new System.Drawing.Point(60, 272);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 4;
@@ -96,7 +105,7 @@ namespace formulariosimples
             "Manaus",
             "Salvador",
             "Brasília"});
-            this.comboBoxCidade.Location = new System.Drawing.Point(40, 206);
+            this.comboBoxCidade.Location = new System.Drawing.Point(63, 288);
             this.comboBoxCidade.Name = "comboBoxCidade";
             this.comboBoxCidade.Size = new System.Drawing.Size(104, 21);
             this.comboBoxCidade.TabIndex = 5;
@@ -107,7 +116,7 @@ namespace formulariosimples
             this.groupBox1.Controls.Add(this.rbNaoBinario);
             this.groupBox1.Controls.Add(this.rbMasculino);
             this.groupBox1.Controls.Add(this.rbFeminino);
-            this.groupBox1.Location = new System.Drawing.Point(43, 251);
+            this.groupBox1.Location = new System.Drawing.Point(63, 338);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 6;
@@ -149,32 +158,133 @@ namespace formulariosimples
             // 
             // btnCadastrar
             // 
+            this.btnCadastrar.BackColor = System.Drawing.Color.Azure;
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.Location = new System.Drawing.Point(93, 357);
+            this.btnCadastrar.Location = new System.Drawing.Point(47, 497);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(103, 36);
             this.btnCadastrar.TabIndex = 7;
             this.btnCadastrar.Text = " Cadastrar";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.UseVisualStyleBackColor = false;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // panelCadastro
+            // 
+            this.panelCadastro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panelCadastro.Controls.Add(this.btnApagar);
+            this.panelCadastro.Controls.Add(this.lblTitulo);
+            this.panelCadastro.Controls.Add(this.txtNumeroCadastro);
+            this.panelCadastro.Controls.Add(this.btnCadastrar);
+            this.panelCadastro.Controls.Add(this.txtNomeCompleto);
+            this.panelCadastro.Controls.Add(this.groupBox1);
+            this.panelCadastro.Controls.Add(this.lblDataNasc);
+            this.panelCadastro.Controls.Add(this.comboBoxCidade);
+            this.panelCadastro.Controls.Add(this.dateTimePicker1);
+            this.panelCadastro.Controls.Add(this.lblCidade);
+            this.panelCadastro.Location = new System.Drawing.Point(0, 0);
+            this.panelCadastro.Name = "panelCadastro";
+            this.panelCadastro.Size = new System.Drawing.Size(341, 560);
+            this.panelCadastro.TabIndex = 8;
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.BackColor = System.Drawing.Color.Azure;
+            this.btnApagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApagar.Location = new System.Drawing.Point(181, 497);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(101, 36);
+            this.btnApagar.TabIndex = 9;
+            this.btnApagar.Text = "Limpar";
+            this.btnApagar.UseVisualStyleBackColor = false;
+            this.btnApagar.Click += new System.EventHandler(this.btnApagar_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(117, 50);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(84, 24);
+            this.lblTitulo.TabIndex = 8;
+            this.lblTitulo.Text = "Cadastro";
+            // 
+            // listView1
+            // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(362, 124);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(770, 367);
+            this.listView1.TabIndex = 9;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged_1);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(362, 81);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(402, 20);
+            this.txtBuscar.TabIndex = 10;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.White;
+            this.btnPesquisar.Location = new System.Drawing.Point(999, 74);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(123, 27);
+            this.btnPesquisar.TabIndex = 11;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnDeletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletar.ForeColor = System.Drawing.Color.White;
+            this.btnDeletar.Location = new System.Drawing.Point(1024, 506);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(108, 43);
+            this.btnDeletar.TabIndex = 12;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = false;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(706, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Usuários";
             // 
             // frmForumularioSimples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 525);
-            this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBoxCidade);
-            this.Controls.Add(this.lblCidade);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.lblDataNasc);
-            this.Controls.Add(this.txtNomeCompleto);
-            this.Controls.Add(this.txtNumeroCadastro);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(1144, 561);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnDeletar);
+            this.Controls.Add(this.btnPesquisar);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.panelCadastro);
             this.Name = "frmForumularioSimples";
             this.Text = "Formulário Simples";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panelCadastro.ResumeLayout(false);
+            this.panelCadastro.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +303,14 @@ namespace formulariosimples
         private System.Windows.Forms.RadioButton rbMasculino;
         private System.Windows.Forms.RadioButton rbFeminino;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Panel panelCadastro;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnDeletar;
+        private System.Windows.Forms.Label label1;
     }
 }
 
