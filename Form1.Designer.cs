@@ -29,7 +29,6 @@ namespace formulariosimples
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNumeroCadastro = new System.Windows.Forms.TextBox();
             this.txtNomeCompleto = new System.Windows.Forms.TextBox();
             this.lblDataNasc = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -52,28 +51,19 @@ namespace formulariosimples
             this.panelCadastro.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtNumeroCadastro
-            // 
-            this.txtNumeroCadastro.Location = new System.Drawing.Point(63, 111);
-            this.txtNumeroCadastro.Name = "txtNumeroCadastro";
-            this.txtNumeroCadastro.Size = new System.Drawing.Size(203, 20);
-            this.txtNumeroCadastro.TabIndex = 0;
-            this.txtNumeroCadastro.Text = "Número Cadastro";
-            this.txtNumeroCadastro.Click += new System.EventHandler(this.txtNumeroCadastro_Click);
-            // 
             // txtNomeCompleto
             // 
-            this.txtNomeCompleto.Location = new System.Drawing.Point(63, 166);
+            this.txtNomeCompleto.Location = new System.Drawing.Point(68, 124);
             this.txtNomeCompleto.Name = "txtNomeCompleto";
             this.txtNomeCompleto.Size = new System.Drawing.Size(203, 20);
             this.txtNomeCompleto.TabIndex = 1;
             this.txtNomeCompleto.Text = "Insira seu nome completo";
-            this.txtNomeCompleto.Click += new System.EventHandler(this.txtNomeCompleto_Click);
+
             // 
             // lblDataNasc
             // 
             this.lblDataNasc.AutoSize = true;
-            this.lblDataNasc.Location = new System.Drawing.Point(60, 212);
+            this.lblDataNasc.Location = new System.Drawing.Point(65, 170);
             this.lblDataNasc.Name = "lblDataNasc";
             this.lblDataNasc.Size = new System.Drawing.Size(107, 13);
             this.lblDataNasc.TabIndex = 2;
@@ -82,7 +72,7 @@ namespace formulariosimples
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(63, 229);
+            this.dateTimePicker1.Location = new System.Drawing.Point(68, 187);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(101, 20);
             this.dateTimePicker1.TabIndex = 3;
@@ -90,7 +80,7 @@ namespace formulariosimples
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(60, 272);
+            this.lblCidade.Location = new System.Drawing.Point(65, 230);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 4;
@@ -105,7 +95,7 @@ namespace formulariosimples
             "Manaus",
             "Salvador",
             "Brasília"});
-            this.comboBoxCidade.Location = new System.Drawing.Point(63, 288);
+            this.comboBoxCidade.Location = new System.Drawing.Point(68, 246);
             this.comboBoxCidade.Name = "comboBoxCidade";
             this.comboBoxCidade.Size = new System.Drawing.Size(104, 21);
             this.comboBoxCidade.TabIndex = 5;
@@ -116,7 +106,7 @@ namespace formulariosimples
             this.groupBox1.Controls.Add(this.rbNaoBinario);
             this.groupBox1.Controls.Add(this.rbMasculino);
             this.groupBox1.Controls.Add(this.rbFeminino);
-            this.groupBox1.Location = new System.Drawing.Point(63, 338);
+            this.groupBox1.Location = new System.Drawing.Point(68, 296);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 6;
@@ -175,7 +165,6 @@ namespace formulariosimples
             this.panelCadastro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.panelCadastro.Controls.Add(this.btnApagar);
             this.panelCadastro.Controls.Add(this.lblTitulo);
-            this.panelCadastro.Controls.Add(this.txtNumeroCadastro);
             this.panelCadastro.Controls.Add(this.btnCadastrar);
             this.panelCadastro.Controls.Add(this.txtNomeCompleto);
             this.panelCadastro.Controls.Add(this.groupBox1);
@@ -291,8 +280,6 @@ namespace formulariosimples
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNumeroCadastro;
         private System.Windows.Forms.TextBox txtNomeCompleto;
         private System.Windows.Forms.Label lblDataNasc;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

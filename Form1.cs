@@ -132,11 +132,7 @@ namespace formulariosimples
                 bool generoNB;
 
                 //validação de campos obrigatórios
-                if (string.IsNullOrWhiteSpace(txtNumeroCadastro.Text))
-                {
-                    MessageBox.Show("Por favor, preencha o número de cadastro.");
-                    return; // Interrompe a execução do código caso o campo esteja 
-                }
+
 
                 if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
                 {
@@ -168,7 +164,7 @@ namespace formulariosimples
 
 
                 //Agora, caso todos os campos estejam preenchidos, a validação prossegue
-                numeroCadastro = Convert.ToInt32(txtNumeroCadastro.Text);
+
                 nomeUsuario = txtNomeCompleto.Text;
                 cidade = comboBoxCidade.Text;
                 generoF = rbFeminino.Checked;
@@ -188,7 +184,7 @@ namespace formulariosimples
                     generoSelecionado = "Não Binário";
 
                 //Exibir as informações em messageBox
-                MessageBox.Show("Número cadastro: " + numeroCadastro);
+
                 MessageBox.Show("Nome: " + nomeUsuario);
                 MessageBox.Show("Data de Nascimento: " + dataNascimento);
                 MessageBox.Show("Cidade: " + cidade);
@@ -212,15 +208,14 @@ namespace formulariosimples
                 cmd.Prepare();
 
 
-               if ( numero_usuario == null)
+                if (numero_usuario == null)
                 {
                     //Insert CREAT
-                    cmd.CommandText = "INSERT INTO cadastro(numero_cadastro, nome_completo, data_nascimento, cidade, genero) " +
-                    "VALUES (@numero_cadastro, @nome_completo, @data_nascimento, @cidade, @genero)";
+                    cmd.CommandText = "INSERT INTO cadastro( nome_completo, data_nascimento, cidade, genero) " +
+                    "VALUES ( @nome_completo, @data_nascimento, @cidade, @genero)";
 
                     //Adiciona os parâmetros com os dados do formulário
                     cmd.Parameters.AddWithValue("@nome_completo", txtNomeCompleto.Text.Trim());
-                    cmd.Parameters.AddWithValue("@numero_cadastro", txtNumeroCadastro.Text.Trim());
                     cmd.Parameters.AddWithValue("@data_nascimento", dataNascimento);
                     cmd.Parameters.AddWithValue("@cidade", cidade);
                     cmd.Parameters.AddWithValue("@genero", generoSelecionado);
@@ -236,26 +231,26 @@ namespace formulariosimples
 
                     carregar_clientes();
 
-                    
 
-                    txtNumeroCadastro.Focus();
+
+                    txtNomeCompleto.Focus();
                 }
                 else
                 {
                     //UPDATE
                     cmd.CommandText = $"UPDATE `cadastro` SET " +
                     $"nome_completo = @nome_completo, " +
-                    $"numero_cadastro = @numero_cadastro, " +
+                    "data_nascimento = @data_nascimento, " +
                     $"cidade = @cidade, " +
                     $"genero = @genero " +
                     $"WHERE numero_cadastro = @numero_cadastro";
 
                     cmd.Parameters.AddWithValue("@nome_completo", txtNomeCompleto.Text.Trim());
-                    cmd.Parameters.AddWithValue("@numero_cadastro", txtNumeroCadastro.Text.Trim());
                     cmd.Parameters.AddWithValue("@data_nascimento", dataNascimento);
                     cmd.Parameters.AddWithValue("@cidade", cidade);
                     cmd.Parameters.AddWithValue("@genero", generoSelecionado);
-                    
+                    cmd.Parameters.AddWithValue("@numero_cadastro", numero_usuario);
+
 
                     //Executa o comando de alteração no banco
                     cmd.ExecuteNonQuery();
@@ -313,8 +308,6 @@ namespace formulariosimples
             foreach (ListViewItem item in clientedaselecao)
             {
 
-
-                txtNumeroCadastro.Text = item.SubItems[0].Text;
                 numero_usuario = Convert.ToInt32(item.SubItems[0].Text);
 
                 //Exibe uma MessageBox com o código do cliente
@@ -376,62 +369,34 @@ namespace formulariosimples
         }
 
 
-        
-
-        private void txtNumeroCadastro_Click(object sender, EventArgs e)
-        {
-            //Limpa o conteúdo do TextBox quando o usuário clicar nele
-            if (txtNumeroCadastro.Text == "Número Cadastro")
-            {
-                txtNumeroCadastro.Text = "";
-            }
-            else
-            {
-                txtNumeroCadastro.Text = "Número Cadastro";
-            }
-
-        }
-
-        private void txtNomeCompleto_Click(object sender, EventArgs e)
-        {
-            //Limpa o conteúdo do TextBox quando o usuário clicar nele
-            if (txtNomeCompleto.Text == "Insira seu nome completo")
-            {
-                txtNomeCompleto.Text = "";
-            }
-            else
-            {
-                txtNomeCompleto.Text = "Nome Completo";
-            }
-     
-        }
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
             numero_usuario = null;
-                // Limpar os campos de texto
-                txtNumeroCadastro.Clear();
-                txtNomeCompleto.Clear();
+            // Limpar os campos de texto
+            txtNomeCompleto.Clear();
 
-                // Limpar o ComboBox (deseleciona qualquer item selecionado)
-                comboBoxCidade.SelectedItem = null;
+            // Limpar o ComboBox (deseleciona qualquer item selecionado)
+            comboBoxCidade.SelectedItem = null;
 
             // Limpar o DateTimePicker (define a data para a data mínima possível)
             dateTimePicker1.Value = DateTime.Today;
 
-                // Desmarcar os RadioButtons no GroupBox (gênero)
-                rbMasculino.Checked = false;
-                rbFeminino.Checked = false;
-                rbNaoBinario.Checked = false;
+            // Desmarcar os RadioButtons no GroupBox (gênero)
+            rbMasculino.Checked = false;
+            rbFeminino.Checked = false;
+            rbNaoBinario.Checked = false;
 
-                // Caso queira adicionar algum tipo de mensagem para informar que os campos foram limpos:
-                MessageBox.Show("Campos limpos com sucesso!", "Limpeza", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            // Caso queira adicionar algum tipo de mensagem para informar que os campos foram limpos:
+            MessageBox.Show("Campos limpos com sucesso!", "Limpeza", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void btnDeletar_Click(object sender, EventArgs e)
         {
             excluir_cliente();
+
+            iniciarPlaceholder();
         }
         private void excluir_cliente()
         {
@@ -454,8 +419,8 @@ namespace formulariosimples
                     cmd.Prepare();
 
                     cmd.CommandText = "DELETE FROM cadastro WHERE numero_cadastro = @numero_cadastro";
+                    cmd.Parameters.AddWithValue("@numero_cadastro", numero_usuario);
 
-                    cmd.Parameters.AddWithValue("@numero_cadastro", txtNumeroCadastro.Text.Trim());
 
                     cmd.ExecuteNonQuery();
 
@@ -500,8 +465,31 @@ namespace formulariosimples
 
             }
         }
+
+        private void txtNomeCompleto_Enter(object sender, EventArgs e)
+        {
+            if (txtNomeCompleto.Text == "Digite o seu nome")
+            {
+                txtNomeCompleto.Text = "";
+                txtNomeCompleto.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtNomeCompleto_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
+            {
+                txtNomeCompleto.Text = "Digite o seu nome";
+                txtNomeCompleto.ForeColor = Color.Gray;
+            }
+        }
+        private void iniciarPlaceholder()
+        {
+            if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
+            {
+                txtNomeCompleto.Text = "Digite o seu nome";
+                txtNomeCompleto.ForeColor = Color.Gray;
+            }
+        }
     }
 }
-
-
-
